@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #efe2d4; /* Background color */
+  color: #333; /* Text color */
+}
+
+.details-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Ensures it takes full height */
+  padding: 20px;
+  background-color: #efe2d4; /* Ensures background color is consistent */
+}
+
+.details-title {
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  margin-top: 20px; /* Added margin-top for padding */
+  color: #595d48; /* Text color */
+}
+
+.details-description {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  color: #595d48; /* Text color */
+}
+
+.details-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  background-color: #fff; /* Ensures background color is consistent */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+input,
+select { /* Apply styles to both input and select */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif; /* Match font-family with other elements */
+}
+
+.submit-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff; /* Blue background color */
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.submit-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.privacy-policy {
+  font-size: 0.875rem; /* Slightly smaller font */
+  color: red; /* Red color */
+  margin-top: 10px;
+  text-align: left;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.875rem; /* Slightly smaller font */
+  margin-top: 5px;
+  text-align: center;
+}

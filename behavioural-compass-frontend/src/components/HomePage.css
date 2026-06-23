@@ -1,0 +1,71 @@
+/* src/components/HomePage.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.home-page {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between content and image */
+  height: 100vh;
+  background-color: #efe2d4; /* Background color */
+  padding: 0 5%; /* Add padding to the left and right */
+  box-sizing: border-box;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+.content {
+  max-width: 35%; /* Adjust width to fit the content and image nicely */
+  padding-left: 5%; /* Added padding to the left to centralize content */
+}
+
+.title {
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #595d48; /* Text color */
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.25rem;
+  color: #595d48; /* Text color */
+  margin-bottom: 6rem; /* Increased margin-bottom to create a larger gap */
+}
+
+.begin-button {
+  padding: 0.5rem 1rem; /* Reduced padding to make the button smaller */
+  font-size: 1rem; /* Smaller font size */
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.begin-button .arrow {
+  margin-left: 0.5rem;
+  font-weight: bold;
+}
+
+.begin-button:hover {
+  background-color: #0056b3;
+}
+
+.image-container {
+  height: 100vh; /* Full height of the viewport */
+  display: flex;
+  align-items: center;
+}
+
+.side-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%; /* Full height of the container */
+  width: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Cover the area without distortion */
+}

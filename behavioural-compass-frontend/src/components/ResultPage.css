@@ -1,0 +1,171 @@
+.result-page {
+  text-align: center;
+  padding: 20px;
+}
+
+.result-title {
+  font-family: 'Alegreya Sans SC', sans-serif;
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.intro-box {
+  width: 80%;
+  padding: 15px 20px 20px 30px;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.intro-text {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 1em;
+  margin-bottom: 20px;
+  text-align: left;
+  line-height: 1.6;
+}
+
+.pie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto; /* Changed from 300px to allow chart to fit */
+}
+
+.legend-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.legend-color {
+  width: 13px;
+  height: 13px;
+  margin-right: 5px;
+}
+
+.legend-text {
+  font-size: 0.9em;
+}
+
+.signature-themes-title {
+  margin-top: 20px;
+  font-size: 1.5em;
+}
+
+.scores-box {
+  width: 80%;
+  padding: 10px;
+  margin: 20px auto;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.scores-box h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.scores-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.score-item {
+  font-size: 1em;
+  margin: 5px 0;
+  text-align: left;
+}
+
+.result-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result-card {
+  width: 80%;
+  background-color: #f9f9f9;
+  padding: 0px 20px 5px 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* text-align: left; */
+  overflow: visible; /* Ensure content is fully visible */
+  color: #000000;
+  justify-content: center;
+
+}
+
+.result-card h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+
+.result-card p {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600; /* You can adjust the weight as needed */
+  font-size: 1rem;
+  white-space: pre-wrap; /* Preserve line breaks and spacing */
+  overflow: visible; /* Ensure content is fully visible */
+  text-align: left;
+}
+
+.result-card.reasoning {
+  border: 10px solid #FF6384; /* Red */
+}
+
+.result-card.visionary {
+  border: 10px solid #FFA726; /* Orange */
+}
+
+.result-card.leverage {
+  border: 10px solid #AB47BC; /* Purple */
+}
+
+.result-card.assertiveness {
+  border: 10px solid #FFD54F; /* Yellow */
+}
+
+.result-card.friendly-persuasion {
+  border: 10px solid #66BB6A; /* Green */
+}
+
+.result-card.bargaining {
+  border: 10px solid #42A5F5; /* Blue */
+}
+
+
+
+/* Add borders to the result cards based on trait */
+/* .result-card.reasoning {
+  border-left: 5px solid #FF6384;
+}
+
+.result-card.visionary {
+  border-left: 5px solid #FFA726;
+}
+
+.result-card.leverage {
+  border-left: 5px solid #AB47BC;
+}
+
+.result-card.assertiveness {
+  border-left: 5px solid #FFD54F;
+}
+
+.result-card.friendly-persuasion {
+  border-left: 5px solid #66BB6A;
+}
+
+.result-card.bargaining {
+  border-left: 5px solid #42A5F5;
+} */
