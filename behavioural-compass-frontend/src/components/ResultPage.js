@@ -318,18 +318,22 @@ const ResultPage = () => {
               data={[
                 ['Trait', 'Percentage'],
                 ...sortedScores.map(score => [
-                  `${score.trait}: ${((score.score / totalScore) * 100).toFixed(1)}%`,
+                  `${score.trait}\n${((score.score / totalScore) * 100).toFixed(1)}%`,
                   Number(((score.score / totalScore) * 100).toFixed(1))
                 ])
               ]}
               options={{
                 ...options,
                 is3D: false,
-                chartArea: { width: '95%', height: '95%' },
-                pieSliceTextStyle: { color: 'black', fontSize: 11 }
+                chartArea: { width: '90%', height: '90%' },
+                pieSliceTextStyle: { color: 'black', fontSize: 11 },
+                slices: sortedScores.map(score => ({
+                  color: colorMap[score.trait],
+                  offset: 0
+                }))
               }}
               width="500px"
-              height="350px"
+              height="300px"
             />
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', flexWrap: 'wrap', padding: '0 40px' }}>
