@@ -315,14 +315,29 @@ const ResultPage = () => {
           <div className="pdf-pie-container">
             <Chart
               chartType="PieChart"
-              data={pieData}
+              data={[
+                ['Trait', 'Percentage'],
+                ...sortedScores.map(score => [
+                  `${score.trait}: ${((score.score / totalScore) * 100).toFixed(1)}%`,
+                  Number(((score.score / totalScore) * 100).toFixed(1))
+                ])
+              ]}
               options={{
                 ...options,
-                chartArea: { width: '75%', height: '75%' }
+                is3D: false,
+                chartArea: { width: '80%', height: '80%' }
               }}
               width="500px"
               height="500px"
             />
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', flexWrap: 'wrap', padding: '0 40px' }}>
+            {sortedScores.map(score => (
+              <div key={score.trait} style={{ display: 'flex', alignItems: 'center', marginRight: '15px', marginBottom: '10px' }}>
+                <div style={{ width: '15px', height: '15px', marginRight: '8px', backgroundColor: colorMap[score.trait] }} />
+                <span style={{ fontSize: '14px', fontFamily: "'Times New Roman', Times, serif" }}>{score.trait}</span>
+              </div>
+            ))}
           </div>
           <div className="pdf-footer">Crux Management Services Pvt.Ltd</div>
         </div>
