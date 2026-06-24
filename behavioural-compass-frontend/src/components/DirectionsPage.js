@@ -5,14 +5,14 @@ import './DirectionsPage.css';
 const DirectionsPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { userId} = location.state;
+  const { userId, userName } = location.state || {};
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scrolls to the top of the page when the component mounts
   }, []);
 
   const handleNext = () => {
-    navigate('/questionnaire', {state:{userId}}); // Update this route as necessary
+    navigate('/questionnaire', {state: {userId, userName}}); // Update this route as necessary
   };
 
   return (

@@ -8,7 +8,7 @@ import './ResultPage.css';
 const ResultPage = () => {
   const resultRef = React.useRef(null);
   const location = useLocation();
-  const { scores = [], userId } = location.state || {};
+  const { scores = [], userId, userName = 'Participant' } = location.state || {};
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,27 +24,30 @@ const ResultPage = () => {
   }, [userId]);
 
   const sendEmailWithPDF = async () => {
-    if (!resultRef.current) return;
+    const pages = document.querySelectorAll('.pdf-page');
+    if (!pages || pages.length === 0) return;
     try {
-      const element = resultRef.current;
-      const canvas = await html2canvas(element, { 
-        scale: 2, // Higher quality
-        useCORS: true,
-        scrollY: 0,
-        windowWidth: document.documentElement.offsetWidth,
-        windowHeight: document.documentElement.scrollHeight
-      });
-      
-      const imgData = canvas.toDataURL('image/png');
-      
-      // Create a PDF with custom dimensions matching the canvas
       const pdf = new jsPDF({
         orientation: 'portrait',
         unit: 'px',
-        format: [canvas.width, canvas.height]
+        format: [794, 1123]
       });
+
+      for (let i = 0; i < pages.length; i++) {
+        const canvas = await html2canvas(pages[i], { 
+          scale: 1.5, // Good balance of quality and file size
+          useCORS: true,
+          scrollY: 0
+        });
+        
+        const imgData = canvas.toDataURL('image/jpeg', 0.8);
+        
+        if (i > 0) {
+          pdf.addPage([794, 1123], 'portrait');
+        }
+        pdf.addImage(imgData, 'JPEG', 0, 0, 794, 1123, undefined, 'FAST');
+      }
       
-      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
       const pdfBase64 = pdf.output('datauristring');
 
       const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001';
@@ -283,6 +286,57 @@ const ResultPage = () => {
             </div>
           );
         })}
+      </div>
+
+      {/* Hidden container for PDF Generation */}
+      <div className="pdf-report-container">
+        {/* Page 1: Intro */}
+        <div className="pdf-page">
+          <div className="pdf-header-title">Behaviour Compass. Find Your True North</div>
+          <div className="pdf-greeting">Dear {userName},</div>
+          <p>Congratulations on completing your self-discovery journey! Now, embark on a transformative adventure.</p>
+          <p>Just like a compass unwavering in its direction, the Behavioural Compass is your guide to identifying your own unwavering principles and uncovering your own true north. These are the values, beliefs, and motivations that define who you are at your core.</p>
+          <p>The Behavioural Compass is more than just self-discovery – it's a transformative journey that impacts every aspect of your life. In the workplace, you'll develop a deep sense of purpose, leading with authenticity and inspiring trust in your colleagues. Imagine making decisions with unwavering confidence, knowing that they're aligned with your core compass.</p>
+          <p>Personally, this discovery equips you to face challenges with a newfound strength. You'll build stronger, more meaningful relationships and experience a profound sense of satisfaction as you navigate life's journey with clear direction.</p>
+          <p>The Behavioural Compass isn't about temporary fixes or fleeting trends. It's about uncovering the very essence of who you are. It's the map to a life lived with purpose, where your inner compass guides you towards fulfilment and genuine success, both professionally and personally.</p>
+          <p>So, get ready to chart your course.</p>
+          <div className="pdf-footer">Crux Management Services Pvt.Ltd</div>
+        </div>
+
+        {/* Page 2: Scores & Pie Chart */}
+        <div className="pdf-page">
+          <div className="pdf-page-2-title">Behavioural Compass Report</div>
+          <div className="pdf-scores-title">Scores:</div>
+          <ul className="pdf-scores-list">
+            {sortedScores.map(score => (
+              <li key={score.trait}>{score.trait}: {score.score}</li>
+            ))}
+          </ul>
+          <div className="pdf-pie-container">
+            <Chart
+              chartType="PieChart"
+              data={pieData}
+              options={options}
+              width="600px"
+              height="600px"
+            />
+          </div>
+          <div className="pdf-footer">Crux Management Services Pvt.Ltd</div>
+        </div>
+
+        {/* Page 3: Traits */}
+        <div className="pdf-page">
+          {sortedScores.map(score => {
+            const { title, content } = generateCardContent(score.trait, score.score);
+            return (
+              <div key={score.trait}>
+                <div className="pdf-trait-title">{title}</div>
+                <div className="pdf-trait-desc" dangerouslySetInnerHTML={{ __html: content }} />
+              </div>
+            );
+          })}
+          <div className="pdf-footer">Crux Management Services Pvt.Ltd</div>
+        </div>
       </div>
     </div>
   );

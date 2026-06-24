@@ -84,8 +84,9 @@ const DetailsPage = ({ onSubmit }) => {
 
       const result = await response.json();
       const { userId } = result;
+      const userName = `${form.firstName} ${form.lastName}`.trim();
   
-      navigate('/directions', { state: { userId } });
+      navigate('/directions', { state: { userId, userName } });
     } catch (error) {
       console.error('Error submitting form:', error);
       setError('Error submitting form');

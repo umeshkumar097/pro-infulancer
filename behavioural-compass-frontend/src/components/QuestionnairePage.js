@@ -9,7 +9,7 @@ const QuestionnairePage = () => {
   }, []);
 
   const location = useLocation();
-  const { userId } = location.state || {};
+  const { userId, userName } = location.state || {};
 
   const [points, setPoints] = useState(
     Array.from({ length: situations.length }, () => Array(6).fill(''))
@@ -96,7 +96,7 @@ const QuestionnairePage = () => {
         body: JSON.stringify({ userId, scores })
       });
 
-      navigate('/result', { state: { scores, userId } });
+      navigate('/result', { state: { scores, userId, userName } });
     } catch (err) {
       console.error(err);
       setGeneralError('Error submitting scores');
