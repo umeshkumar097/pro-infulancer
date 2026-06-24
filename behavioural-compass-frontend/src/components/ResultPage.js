@@ -20,6 +20,7 @@ const ResultPage = () => {
       }, 2000);
       return () => clearTimeout(timer);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 
   const sendEmailWithPDF = async () => {
