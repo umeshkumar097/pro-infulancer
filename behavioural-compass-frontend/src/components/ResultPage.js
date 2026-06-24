@@ -325,10 +325,11 @@ const ResultPage = () => {
               options={{
                 ...options,
                 is3D: false,
-                chartArea: { width: '80%', height: '80%' }
+                chartArea: { width: '95%', height: '95%' },
+                pieSliceTextStyle: { color: 'black', fontSize: 11 }
               }}
               width="500px"
-              height="500px"
+              height="350px"
             />
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px', flexWrap: 'wrap', padding: '0 40px' }}>
