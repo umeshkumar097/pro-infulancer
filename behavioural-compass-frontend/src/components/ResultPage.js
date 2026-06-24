@@ -316,9 +316,12 @@ const ResultPage = () => {
             <Chart
               chartType="PieChart"
               data={pieData}
-              options={options}
-              width="600px"
-              height="600px"
+              options={{
+                ...options,
+                chartArea: { width: '75%', height: '75%' }
+              }}
+              width="500px"
+              height="500px"
             />
           </div>
           <div className="pdf-footer">Crux Management Services Pvt.Ltd</div>
